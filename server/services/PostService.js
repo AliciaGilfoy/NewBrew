@@ -31,12 +31,16 @@ class PostService {
     if (post.creatorEmail != email) {
       throw new UnAuthorized();
     }
-    // @ts-ignore
-    post.body = update.body || post.body;
-    post.upCount = update.upCount || post.upCount;
-    post.downCount = update.downCount || post.downCount;
-    post.title = update.title || post.title;
-    post.comments = update.comments || post.comments;
+    // NOTE the code below works, but is silly and would require maintenance, I replaced with loop that follows [JR]
+    // post.body = update.body || post.body;
+    // post.upCount = update.upCount || post.upCount;
+    // post.downCount = update.downCount || post.downCount;
+    // post.title = update.title || post.title;
+    // post.comments = update.comments || post.comments;
+
+    for (let prop in update) {
+      post[prop] = update[prop];
+    }
 
     await post.save();
     return post;
