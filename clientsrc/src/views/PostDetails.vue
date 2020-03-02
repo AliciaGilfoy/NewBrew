@@ -32,7 +32,7 @@
           v-if="!commentForm"
           @click="commentForm = true"
           type="button"
-          class="btn btn-block btn-secondary"
+          class="btn btn-block btn-secondary comment"
         >Comment</button>
         <button
           v-if="commentForm"
@@ -145,5 +145,9 @@ export default {
 }
 .title-row {
   background-color: rgba(240, 154, 25, 0.521);
+}
+.comment {
+  font-size: 0.9rem;
+  height: 100%;
 }
 </style>
